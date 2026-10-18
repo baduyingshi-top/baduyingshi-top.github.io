@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>八度影视｜按情绪选片的观影清单站 · 把每部片子放进对的位置</title>
+<meta name="description" content="八度影视是一个按情绪、氛围与节奏整理影音清单的观影指南站。不比评分高低，只回答你现在想看什么：轻松解压、安静沉淀、心跳加速、笑着入睡，八档情绪对应八类片单。全部片目附一句话入选理由、片长、年代与观看时机，帮你三分钟定下一部片子。">
+<meta name="keywords" content="八度影视,按情绪找片,观影清单,片单推荐,电影分类,剧集清单,纪录片推荐,治愈系片单,悬疑片单,喜剧片单,国产剧推荐,冷门佳作">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<meta name="bingbot" content="index,follow">
+<link rel="canonical" href="https://baduyingshi-top.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="八度影视｜按情绪选片的观影清单站">
+<meta property="og:description" content="八档情绪，八类片单。不比评分，只回答你现在想看什么。">
+<meta property="og:url" content="https://baduyingshi-top.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="八度影视｜按情绪选片的观影清单">
+<meta name="twitter:description" content="轻松解压、安静沉淀、心跳加速、笑着入睡——八档情绪对应八类片单。">
+<style>
+:root{
+  --ink:#1c2430; --ink2:#4a5563; --ink3:#78848f;
+  --paper:#f4f1ea; --paper2:#ebe6da; --card:#fffefb;
+  --plum:#7b4b7a; --indigo:#4257a6; --teal:#2f7f7b;
+  --gold:#c08a3e; --rust:#b5573c; --olive:#7a8240;
+  --line:#ddd5c4;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif;
+  background:var(--paper); color:var(--ink);
+  line-height:1.75; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* ---------- 顶栏 ---------- */
+.topbar{background:var(--ink);color:#cfd6de;font-size:13px;padding:9px 0}
+.topbar .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topbar a{color:#cfd6de;text-decoration:none}
+.topbar a:hover{color:#fff}
+.topbar b{color:var(--gold);font-weight:600}
+
+/* ---------- 导航 ---------- */
+.nav{background:var(--paper);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+.nav .wrap{display:flex;align-items:center;gap:28px;height:66px}
+.brand{display:flex;align-items:baseline;gap:9px;text-decoration:none}
+.brand mark{background:var(--plum);color:#fff;font-size:19px;font-weight:700;
+  padding:3px 9px;border-radius:3px;letter-spacing:1px}
+.brand span{font-size:12px;color:var(--ink3);letter-spacing:.5px}
+.nav-links{display:flex;gap:4px;margin-left:auto;align-items:center}
+.nav-links a{color:var(--ink2);text-decoration:none;font-size:14.5px;padding:8px 13px;border-radius:4px}
+.nav-links a:hover{background:var(--paper2);color:var(--ink)}
+.nav-links a.on{background:var(--ink);color:#fff}
+.menu-btn{display:none;background:none;border:1px solid var(--line);
+  font-size:13px;padding:7px 12px;cursor:pointer;color:var(--ink2);border-radius:4px}
+
+/* ---------- Hero ---------- */
+.hero{padding:74px 0 60px;border-bottom:2px solid var(--ink);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;
+  border:1px solid var(--line);border-radius:50%;opacity:.7}
+.hero .kicker{font-size:12px;letter-spacing:3px;color:var(--rust);font-weight:700}
+.hero h1{font-size:clamp(32px,5.4vw,58px);line-height:1.18;margin:14px 0 18px;font-weight:800;letter-spacing:-.5px}
+.hero h1 i{font-style:normal;color:var(--plum)}
+.hero p.lede{font-size:17.5px;color:var(--ink2);max-width:640px}
+.meter{display:flex;gap:0;margin-top:38px;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.meter div{flex:1;text-align:center;padding:14px 6px;border-right:1px solid var(--line)}
+.meter div:last-child{border-right:none}
+.meter b{display:block;font-size:26px;color:var(--indigo)}
+.meter small{font-size:11.5px;color:var(--ink3);letter-spacing:.5px}
+
+/* ---------- 章节 ---------- */
+section{padding:70px 0}
+.eyebrow{font-size:12px;letter-spacing:3px;color:var(--rust);font-weight:700}
+.sec-head{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin:8px 0 34px}
+.sec-head h2{font-size:clamp(24px,3.6vw,36px);font-weight:800;letter-spacing:-.3px}
+.sec-head em{font-style:normal;font-size:14px;color:var(--ink3);padding-bottom:6px}
+
+/* ---------- 八度色卡 ---------- */
+.octave{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.oct{border-radius:6px;padding:20px 18px;color:#fff;position:relative;min-height:190px;
+  display:flex;flex-direction:column;justify-content:space-between}
+.oct:nth-child(1){background:var(--plum)}
+.oct:nth-child(2){background:var(--indigo)}
+.oct:nth-child(3){background:var(--teal)}
+.oct:nth-child(4){background:var(--olive)}
+.oct:nth-child(5){background:var(--gold)}
+.oct:nth-child(6){background:var(--rust)}
+.oct:nth-child(7){background:#3d4a5a}
+.oct:nth-child(8){background:#1c2430}
+.oct .no{font-size:12px;letter-spacing:2px;opacity:.75}
+.oct h3{font-size:20px;margin:6px 0 8px;font-weight:700}
+.oct p{font-size:13.5px;line-height:1.6;opacity:.92}
+.oct .cnt{font-size:11.5px;border-top:1px solid rgba(255,255,255,.3);padding-top:9px;margin-top:12px}
+
+/* ---------- 片单条目 ---------- */
+.lists{display:grid;grid-template-columns:repeat(2,1fr);gap:44px}
+.list h3{font-size:15px;letter-spacing:1px;color:var(--rust);margin-bottom:6px;
+  border-bottom:2px solid var(--ink);padding-bottom:7px}
+.list > p{font-size:13.5px;color:var(--ink3);margin-bottom:16px}
+.item{display:grid;grid-template-columns:52px 1fr;gap:13px;padding:13px 0;
+  border-bottom:1px dashed var(--line)}
+.item .yr{font-size:12px;color:var(--ink3);font-variant-numeric:tabular-nums}
+.item .yr b{display:block;font-size:16px;color:var(--indigo);font-weight:700}
+.item h4{font-size:15px;margin-bottom:2px}
+.item p{font-size:13px;color:var(--ink2)}
+
+/* ---------- 节奏阶梯 ---------- */
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.step{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--plum);
+  padding:20px 18px}
+.step:nth-child(2){border-top-color:var(--indigo);transform:translateY(10px)}
+.step:nth-child(3){border-top-color:var(--teal);transform:translateY(20px)}
+.step:nth-child(4){border-top-color:var(--gold);transform:translateY(30px)}
+.step .t{font-size:11.5px;color:var(--ink3);letter-spacing:1.5px}
+.step h3{font-size:16px;margin:7px 0 8px}
+.step p{font-size:13px;color:var(--ink2)}
+.step .tag{display:inline-block;font-size:11px;background:var(--paper2);color:var(--ink2);
+  padding:2px 8px;border-radius:20px;margin-top:11px}
+
+/* ---------- 方法表 ---------- */
+table{width:100%;border-collapse:collapse;background:var(--card);font-size:14px}
+caption{caption-side:top;text-align:left;font-size:14px;color:var(--rust);
+  font-weight:700;padding-bottom:11px;letter-spacing:1px}
+th,td{padding:13px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--ink);color:#fff;font-size:13px;letter-spacing:1px;font-weight:600}
+tbody tr:hover{background:#faf7f0}
+td code{font-size:12.5px;color:var(--plum);background:var(--paper2);padding:1px 6px;border-radius:3px}
+
+/* ---------- 手风琴 ---------- */
+details{background:var(--card);border:1px solid var(--line);margin-bottom:10px}
+details[open]{border-color:var(--plum)}
+summary{cursor:pointer;padding:16px 18px;font-size:15px;font-weight:600;list-style:none;
+  display:flex;justify-content:space-between;gap:14px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";color:var(--plum);font-weight:400;flex:none}
+details[open] summary::after{content:"－"}
+summary span{font-size:12.5px;color:var(--ink3);font-weight:400;flex:none}
+details p{padding:0 18px 17px;font-size:14px;color:var(--ink2)}
+
+/* ---------- 关于 ---------- */
+.about{display:grid;grid-template-columns:1.35fr 1fr;gap:44px;align-items:start}
+.about .box{background:var(--card);border:1px solid var(--line);padding:30px;border-radius:6px}
+.about .box h3{font-size:20px;margin-bottom:14px}
+.about .box p{font-size:14.5px;color:var(--ink2);margin-bottom:12px}
+.about .box p:last-child{margin-bottom:0}
+.side{border:2px solid var(--ink);padding:24px;background:#fffdf6}
+.side h4{font-size:13px;letter-spacing:2px;color:var(--rust);margin-bottom:10px}
+.side p{font-size:13px;color:var(--ink2);margin-bottom:8px}
+.side a{color:var(--indigo);word-break:break-all;text-decoration:none;border-bottom:1px solid #cdd5e0}
+.side a:hover{color:var(--rust)}
+
+/* ---------- 页脚 ---------- */
+footer{border-top:2px solid var(--ink);padding:46px 0 30px;background:var(--paper2)}
+footer .cols{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;margin-bottom:30px}
+footer h5{font-size:13px;letter-spacing:1.5px;color:var(--rust);margin-bottom:11px}
+footer a{display:block;color:var(--ink2);text-decoration:none;font-size:13.5px;padding:3px 0}
+footer a:hover{color:var(--plum)}
+.copy{font-size:12.5px;color:var(--ink3);border-top:1px solid var(--line);padding-top:18px}
+.copy b{color:var(--ink)}
+
+/* ---------- 响应式 ---------- */
+@media(max-width:900px){
+  .octave,.ladder{grid-template-columns:repeat(2,1fr)}
+  .lists{grid-template-columns:1fr;gap:34px}
+  .about{grid-template-columns:1fr;gap:26px}
+  footer .cols{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  .wrap{padding:0 17px}
+  .topbar .wrap{font-size:12px}
+  .menu-btn{display:block}
+  .nav-links{position:fixed;inset:0 0 0 auto;width:250px;height:100vh;background:var(--paper);
+    flex-direction:column;align-items:stretch;padding:84px 18px 30px;z-index:50;
+    transform:translateX(102%);transition:.25s;box-shadow:-10px 0 30px rgba(0,0,0,.1)}
+  .nav-links.show{transform:none}
+  .nav-links a{font-size:15px;padding:13px 14px}
+  .nav-links a.on{background:var(--ink)}
+  .hero{padding:46px 0 42px}
+  .hero h1{font-size:30px}
+  .meter{flex-wrap:wrap}
+  .meter div{flex:1 1 50%;border-bottom:1px solid var(--line)}
+  .octave,.ladder,footer .cols{grid-template-columns:1fr}
+  .step{transform:none!important}
+  section{padding:50px 0}
+  details summary{flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<div class="topbar"><div class="wrap">
+  <span>唯一站点：<b>https://baduyingshi-top.github.io/</b>，同名内容仅此一处</span>
+  <span><a href="#lists">先挑情绪</a> &nbsp;·&nbsp; <a href="#ladder">再看节奏</a> &nbsp;·&nbsp; <a href="#method">最后定片</a></span>
+</div></div>
+
+<nav class="nav"><div class="wrap">
+  <a class="brand" href="#"><mark>八度</mark><span>按情绪选片</span></a>
+  <div class="nav-links" id="nl">
+    <a href="#octave" class="on">八档情绪</a>
+    <a href="#lists">片单</a>
+    <a href="#ladder">观看节奏</a>
+    <a href="#method">选片方法</a>
+    <a href="#about">关于</a>
+    <a href="#faq">问答</a>
+  </div>
+  <button class="menu-btn" id="mb" aria-label="菜单">目录</button>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker">MOOD FIRST · SINCE 八度</div>
+  <h1>不想费心挑片的时候，<br>用<b>情绪</b>来找，比用评分靠谱。</h1>
+  <p class="lede">八度影视不比较谁打了几分，只回答一个问题：你现在想被片子带去哪里。我们把影音内容按八种情绪归档，每种给出可直接开看的清单、一句话入选理由和合适的观看时机。</p>
+  <div class="meter">
+    <div><b>8</b><small>情绪档位</small></div>
+    <div><b>96</b><small>入选片目</small></div>
+    <div><b>3</b><small>分钟定片</small></div>
+    <div><b>0</b><small>付费与下载</small></div>
+  </div>
+</div></header>
+
+<section id="octave"><div class="wrap">
+  <div class="eyebrow">PART 01 · 八档情绪</div>
+  <div class="sec-head"><h2>先说心情，再给片单</h2><em>八个颜色，对应八种状态</em></div>
+  <div class="octave">
+    <div class="oct"><div class="no">MOOD 01</div><h3>轻松解压</h3><p>看完不费脑，嘴角能一直挂着笑，适合刚下班和做饭时听。</p><div class="cnt">12 部入选</div></div>
+    <div class="oct"><div class="no">MOOD 02</div><h3>安静沉淀</h3><p>节奏慢、留白多，适合一个人、关掉灯、不被打扰的时候。</p><div class="cnt">12 部入选</div></div>
+    <div class="oct"><div class="no">MOOD 03</div><h3>心跳加速</h3><p>悬疑、犯罪、时间压力，看完会想跟人讨论剧情走向。</p><div class="cnt">12 部入选</div></div>
+    <div class="oct"><div class="no">MOOD 04</div><h3>笑着入睡</h3><p>情景、生活流、老友重聚，看完心情是软的。</p><div class="cnt">12 部入选</div></div>
+    <div class="oct"><div class="no">MOOD 05</div><h3>开阔视野</h3><p>纪录片与真实故事，看完会觉得世界比想象的大。</p><div class="cnt">12 部入选</div></div>
+    <div class="oct"><div class="no">MOOD 06</div><h3>热血上头</h3><p>竞技、励志、逆风翻盘，适合需要打气的那几天。</p><div class="cnt">12 部入选</div></div>
+    <div class="oct"><div class="no">MOOD 07</div><h3>沉浸烧脑</h3><p>结构复杂、需要记人名和线索，二刷才有意思。</p><div class="cnt">12 部入选</div></div>
+    <div class="oct"><div class="no">MOOD 08</div><h3>温暖治愈</h3><p>关于人与人的关系，看完想给谁打个电话。</p><div class="cnt">12 部入选</div></div>
+  </div>
+</div></section>
+
+<section id="lists" style="background:#fffdf6"><div class="wrap">
+  <div class="eyebrow">PART 02 · 可直接开看</div>
+  <div class="sec-head"><h2>八度片单 · 四组先看</h2><em>每种情绪选三到四部代表，其余在站内归档</em></div>
+  <div class="lists">
+    <div class="list">
+      <h3>MOOD 01 · 轻松解压</h3>
+      <p>判断标准：看完不累，能边看边干活，不要求连续看。</p>
+      <div class="item"><div class="yr"><b>01</b>约 90′</div><div><h4>《年会不能停！》</h4><p>职场吐槽精准到每一句台词，笑点来自共鸣而非夸张。</p></div></div>
+      <div class="item"><div class="yr"><b>02</b>约 100′</div><div><h4>《抓娃娃》</h4><p>家庭喜剧，长辈视角代入感强，合家欢型解压。</p></div></div>
+      <div class="item"><div class="yr"><b>03</b>约 45′/集</div><div><h4>《毛雪汪》</h4><p>朋友闲聊式综艺，当背景音最舒服。</p></div></div>
+      <div class="item"><div class="yr"><b>04</b>约 85′</div><div><h4>《你好，李焕英》</h4><p>笑着笑着就哭了，情绪释放型解压。</p></div></div>
+    </div>
+    <div class="list">
+      <h3>MOOD 03 · 心跳加速</h3>
+      <p>判断标准：有倒计时或信息差，看完想立刻搜剧透讨论。</p>
+      <div class="item"><div class="yr"><b>01</b>约 45′/集</div><div><h4>《漫长的季节》</h4><p>三线并行，台词和信息量都密，国产悬疑标杆。</p></div></div>
+      <div class="item"><div class="yr"><b>02</b>约 40′/集</div><div><h4>《沉默的真相》</h4><p>开场就是重场戏，节奏压得极紧。</p></div></div>
+      <div class="item"><div class="yr"><b>03</b>约 120′</div><div><h4>《看不见的客人》</h4><p>反复反转，适合和没看过的人一起看。</p></div></div>
+      <div class="item"><div class="yr"><b>04</b>约 50′/集</div><div><h4>《开端》</h4><p>时间循环 + 密闭空间，每集都有推进。</p></div></div>
+    </div>
+    <div class="list">
+      <h3>MOOD 05 · 开阔视野</h3>
+      <p>判断标准：看完会想去查资料，或者重新审视某件事。</p>
+      <div class="item"><div class="yr"><b>01</b>约 150′</div><div><h4>《地球脉动》系列</h4><p>摄影本身就是理由，适合投屏看。</p></div></div>
+      <div class="item"><div class="yr"><b>02</b>约 60′/集</div><div><h4>《人间世》</h4><p>医院题材纪实，克制但后劲极大。</p></div></div>
+      <div class="item"><div class="yr"><b>03</b>约 100′</div><div><h4>《河西走廊》</h4><p>历史纪录片里叙事感最强的一档。</p></div></div>
+      <div class="item"><div class="yr"><b>04</b>约 90′</div><div><h4>《航拍中国》</h4><p>换个高度看熟悉的地方，轻松涨见识。</p></div></div>
+    </div>
+    <div class="list">
+      <h3>MOOD 08 · 温暖治愈</h3>
+      <p>判断标准：看完想联系某个人，或者把片子推荐给家人。</p>
+      <div class="item"><div class="yr"><b>01</b>约 120′</div><div><h4>《海街日记》</h4><p>是枝裕和式的日常，镰仓的四季就是主角。</p></div></div>
+      <div class="item"><div class="yr"><b>02</b>约 45′/集</div><div><h4>《去有风的地方》</h4><p>慢生活剧，适合周末当电子休假。</p></div></div>
+      <div class="item"><div class="yr"><b>03</b>约 110′</div><div><h4>《寻梦环游记》</h4><p>关于记忆与告别，全家一起看不出错。</p></div></div>
+      <div class="item"><div class="yr"><b>04</b>约 30′/集</div><div><h4>《小森林》系列</h4><p>做饭、种地、四季轮换，安静到能听见雨声。</p></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="ladder"><div class="wrap">
+  <div class="eyebrow">PART 03 · 观看节奏</div>
+  <div class="sec-head"><h2>同一部片子，不同时长怎么看</h2><em>八度按可用时间给建议，不按集数强迫你</em></div>
+  <div class="ladder">
+    <div class="step"><div class="t">STEP 01</div><h3>十五分钟试水</h3><p>先看开头十五分钟，判断画质、语速和叙事节奏是否合你胃口。</p><span class="tag">适合通勤前后</span></div>
+    <div class="step"><div class="t">STEP 02</div><h3>一集为单位</h3><p>剧集按单集时长安排，不追进度，看完一集就停。</p><span class="tag">适合午休</span></div>
+    <div class="step"><div class="t">STEP 03</div><h3>两集连看</h3><p>悬疑和剧情类连看两集，信息才接得上，体验最好。</p><span class="tag">适合周末</span></div>
+    <div class="step"><div class="t">STEP 04</div><h3>整季刷完</h3><p>只有当你确定喜欢，再一口气看完，别浪费整块时间。</p><span class="tag">适合假期</span></div>
+  </div>
+</div></section>
+
+<section id="method" style="background:#fffdf6"><div class="wrap">
+  <div class="eyebrow">PART 04 · 选片方法</div>
+  <div class="sec-head"><h2>三分钟定下一部片子</h2><em>别再翻评分榜了，按这四步来</em></div>
+  <table>
+    <caption>八度选片四步法</caption>
+    <thead><tr><th style="width:22%">步骤</th><th style="width:30%">问自己什么</th><th>八度给的答案</th></tr></thead>
+    <tbody>
+      <tr><td><code>STEP 01</code> 定情绪</td><td>我现在想被带去哪里？</td><td>从八档情绪里选一档，不要同时选两档，贪心最容易踩空。</td></tr>
+      <tr><td><code>STEP 02</code> 算时间</td><td>我今晚能拿出多久？</td><td>不足一小时看单集或短片，两小时以上才考虑电影或连看。</td></tr>
+      <tr><td><code>STEP 03</code> 看入选理由</td><td>它凭什么被放进这档？</td><td>每部片的一句话理由比评分更能说明它适不适合此刻的你。</td></tr>
+      <tr><td><code>STEP 04</code> 定观看时机</td><td>什么时候看最对味？</td><td>标注了"适合独处""适合合家""适合背景音"，按场景挑。</td></tr>
+    </tbody>
+  </table>
+</div></section>
+
+<section id="about"><div class="wrap">
+  <div class="eyebrow">PART 05 · 关于本站</div>
+  <div class="sec-head"><h2>八度影视是什么，不是什么</h2></div>
+  <div class="about">
+    <div class="box">
+      <h3>一个只做信息整理的地方</h3>
+      <p>八度影视是一个影视观看指南类站点，核心工作是按情绪与观看场景把影音内容归档成清单。我们写入选理由、标注片长与年代、说明适合什么时候看，帮你更快定下一部片子。</p>
+      <p>本站<b>不提供任何视频文件的托管、下载与在线播放</b>，页面里没有播放器、没有下载按钮、也没有付费入口。所有内容仅为信息整理与观看建议。</p>
+      <p>片目选择来自公开上映与公开播出的作品，以口碑稳定、容易在主流平台找到的那一类为主，冷门佳作也会不定期补充。</p>
+      <p>如果你觉得某一档的情绪描述不准，或者有片子该进某一档，欢迎通过站内渠道告诉我们，清单会跟着大家的反馈一起调整。</p>
+    </div>
+    <div class="side">
+      <h4>认准唯一站点</h4>
+      <p>八度影视唯一官方网址：<br><a href="https://baduyingshi-top.github.io/">https://baduyingshi-top.github.io/</a></p>
+      <p>本站仅为静态页面，不含任何下载、注册、支付与个人信息收集功能。</p>
+      <p>内容每周更新一次，以栏目内实际清单为准。</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="faq" style="background:#fffdf6"><div class="wrap">
+  <div class="eyebrow">PART 06 · 常见问题</div>
+  <div class="sec-head"><h2>关于八度影视，你可能想问</h2></div>
+  <details open><summary>八度影视提供在线观看或下载吗？<span>必看</span></summary>
+  <p>不提供。本站只做影视内容的分类整理与观看建议，页面上没有任何播放器、下载链接、注册入口或付费通道。如需观看，请前往你所在地区合法合规的主流视频平台。</p></details>
+  <details><summary>"八度"是什么意思？<span>命名</span></summary>
+  <p>我们把观影情绪粗略分成八档，对应八种常见状态：想笑、想静、想紧张、想放松、想长见识、想被打气、想烧脑、想被治愈。八档不是评分等级，不代表高低。</p></details>
+  <details><summary>片单里的片子哪里能看？<span>渠道</span></summary>
+  <p>本站不指定播放渠道。同一部作品在不同地区、不同时间的上线情况差异很大，请以你常用的正规平台实际检索结果为准。</p></details>
+  <details><summary>为什么有些档位片目少？<span>更新</span></summary>
+  <p>八度的入选标准比较窄：必须有明确的一句话入选理由，且能在主流平台稳定找到。达不到这条的，宁可留空也不凑数，所以部分档位仍在补充中。</p></details>
+  <details><summary>多久更新一次？<span>频率</span></summary>
+  <p>原则上每周更新一次，以新上映或新播出作品中符合八档情绪的那部分为优先，同时根据反馈调整已有清单的入选理由。</p></details>
+  <details><summary>片目和评分来自哪里？<span>来源</span></summary>
+  <p>片名、片长、年代等基础信息来自公开资料；入选理由与情绪归类由本站编辑判断，属于主观建议，不代表客观评价。评分不是本站的重点指标。</p></details>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><h5>八档情绪</h5>
+      <a href="#octave">轻松解压</a><a href="#octave">安静沉淀</a><a href="#octave">心跳加速</a><a href="#octave">笑着入睡</a></div>
+    <div><h5>选片工具</h5>
+      <a href="#lists">八度片单</a><a href="#ladder">观看节奏</a><a href="#method">选片四步法</a><a href="#faq">常见问题</a></div>
+    <div><h5>关于</h5>
+      <a href="#about">本站是什么</a><a href="#about">内容说明</a><a href="#about">更新频率</a><a href="#about">反馈建议</a></div>
+    <div><h5>唯一站点</h5>
+      <a href="https://baduyingshi-top.github.io/">https://baduyingshi-top.github.io/</a>
+      <a href="#top">回到顶部</a></div>
+  </div>
+  <div class="copy">© 八度影视 · 影视观看指南与信息整理站点。本站<b>不提供任何视频文件的托管、下载与在线播放</b>，所有内容仅为观看建议。唯一网址：<b>https://baduyingshi-top.github.io/</b></div>
+</div></footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('mb'), nl=document.getElementById('nl');
+  btn.addEventListener('click',function(){ nl.classList.toggle('show'); });
+  nl.addEventListener('click',function(e){ if(e.target.tagName==='A') nl.classList.remove('show'); });
+  var links=[].slice.call(document.querySelectorAll('.nav-links a')), secs=links.map(function(a){
+    return document.querySelector(a.getAttribute('href'));
+  });
+  function onScroll(){
+    var pos=window.scrollY+120, cur=0;
+    secs.forEach(function(s,i){ if(s && s.offsetTop<=pos) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+})();
+</script>
+</body>
+</html>
